@@ -1,0 +1,49 @@
+services:
+  db:
+    image: mysql
+    volumes:
+      # for the database password
+      - ./db-password.txt:/run/secret/db-password:ro
+      # for the database itself 
+      # the name must be /example as mintioned in the main.go file 
+      - ./mysql-data:/var/lib/mysql
+    environment:
+      # database password
+      MYSQL_ROOT_PASSWORD_FILE: /run/secret/db-password
+    networks:
+     - my-internal
+  
+  backend:
+    image: backend
+    volumes:
+      # database password file
+      - ./db-password.txt:/run/secret/db-password:ro
+    environment:
+      # database password as mintioned in the main.go
+      DB_PASSWORD_FILE: /run/secret/db-password
+    networks:
+     - my-internal
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx
+    ports: 
+      # map to the backend
+      - "443:443"
+    volumes:
+      # for the config file
+      - ./reverse-proxy/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./reverse-proxy/ssl:/etc/nginx/ssl:ro
+
+    networks:
+      - my-internal
+      - my-external
+    depends_on:
+      - backend
+
+networks:
+  my-internal:
+  my-external:
+
+
