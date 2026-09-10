@@ -1,5 +1,14 @@
 ## Important: This is a dummy project all the passwords and cert uploaded are useless
 
+# Run in one command
+```bash
+git clone https://github.com/MoHussam-865/DevOps-Project && \
+cd DevOps-Project && \
+docker build -t backend . && \
+docker-compose up -d
+```
+
+
 # Step 1: On The Host you must have 
  - dir `./reverse-proxy/ssl` that have `nginx.crt & nginx.key`
  - dir `./reverse-proxy` that has `nginx.conf`
@@ -16,15 +25,6 @@ docker build -t backend
 ```bash
 docker-compose up
 ```
-
-# Run
-```bash
-git clone https://github.com/MoHussam-865/DevOps-Project && \
-cd DevOps-Project && \
-docker build -t backend . && \
-docker-compose up -d
-```
-
 
 ## We need to build an three tier application (backend,Database,proxy) with docker principles
 
