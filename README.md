@@ -1,5 +1,31 @@
 ## Important: This is a dummy project all the passwords and cert uploaded are useless
 
+# Step 1: On The Host you must have 
+ - dir `./reverse-proxy/ssl` that have `nginx.crt & nginx.key`
+ - dir `./reverse-proxy` that has `nginx.conf`
+ - `db-password.txt` at `./` 
+
+# Step 2: Create the backend image
+ - run 
+```bash
+docker build -t backend
+```
+# Step 3: Grab a Cup of Coffee
+# Step 4: Run The Project
+ - run
+```bash
+docker-compose up
+```
+
+# Run
+```bash
+git clone https://github.com/MoHussam-865/DevOps-Project && \
+cd DevOps-Project && \
+docker build -t backend && \
+docker-compose up
+```
+
+
 ## We need to build an three tier application (backend,Database,proxy) with docker principles
 
  - The backend docker file write in multi-stage approach.
@@ -29,9 +55,3 @@ Note:You will find backend files in the same path of the project.
 # backend listen on port 8000
 
 
-# On Host
-- create dir for the nginx config file 
-    lets say  reverse-proxy/nginx.conf
-- create dir for the cert 
-    lets say reverse-proxy/ssl/*
-- create file named db-password.txt that has the database password
