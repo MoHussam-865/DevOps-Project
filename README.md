@@ -21,7 +21,7 @@ docker-compose up
 ```bash
 git clone https://github.com/MoHussam-865/DevOps-Project && \
 cd DevOps-Project && \
-docker build -t backend && \
+docker build -t backend . && \
 docker-compose up
 ```
 
