@@ -10,6 +10,7 @@ services:
     environment:
       # database password
       MYSQL_ROOT_PASSWORD_FILE: /run/secret/db-password
+      MYSQL_DATABASE: example
     networks:
      - my-internal
   
@@ -44,6 +45,8 @@ services:
 
 networks:
   my-internal:
+    internal: true
+
   my-external:
 
 
